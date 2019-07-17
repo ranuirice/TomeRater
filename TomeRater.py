@@ -138,7 +138,7 @@ class TomeRater:
                 self.books[book] += 1
             else:
                 # If the new book's ISBN is unique, add it to the catalog
-                if book.isbn not in [books.isbn for books in self.books]:
+                if all(book.isbn != books.isbn for books in self.books):
                     self.books[book] = 1
                 else:
                     print(f"ISBN {book.isbn} already exists in catalog")
